@@ -124,10 +124,16 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
-
-
+    wordlist = load_words()
+    secret_word = choose_word(wordlist)
+    print("Welcome to Hangman!")
+    print(f'I am thinking of a word that is {len(secret_word} long.')
+    print('You have 6 guesses left')
+    print(f"Available letters: {string.ascii_lowercase}")
+    guesses = 6
+    warnings = 3
+    while True:
+        guess = input('Please guess')
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
