@@ -128,12 +128,12 @@ def hangman(secret_word):
     secret_word = choose_word(wordlist)
     letters_guessed = []
     print("Welcome to Hangman!")
-    print(f'I am thinking of a word that is {len(secret_word} long.')
+    print(f'I am thinking of a word that is {len(secret_word)} letters long.')
 
     guesses = 6
     warnings = 3
     while True:
-        print(f"Available letters: {string.ascii_lowercase}")
+        print(f"Available letters: {get_available_letters(letters_guessed)}")
         print(f'You have {guesses} guesses left')
         guess = input('Please guess a letter').lower()
 
@@ -152,7 +152,22 @@ def hangman(secret_word):
                 print('Play by the rules!')
                 break
             continue
-        elif guess in
+        else:
+            letters_guessed.append(guess)
+            if guess in secret_word:
+                print("Nice guess!")
+                if is_word_guessed(secret_word, letters_guessed):
+                    print('YOU WIN!')
+                    print(f'Congratulations on guessing the word {secret_word}')
+                    break
+            else:
+                print("Nope!")
+                guesses -= 1
+                if guesses == 0:
+                    print("YOU LOSE!")
+                    print(f'The word was {secret_word}')
+                    break
+            print(get_guessed_word(secret_word, letters_guessed))
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
