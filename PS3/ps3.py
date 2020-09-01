@@ -173,9 +173,13 @@ def update_hand(hand, word):
     hand: dictionary (string -> int)
     returns: dictionary (string -> int)
     """
-
-    pass  # TO DO... Remove this line when you implement this function
-
+    
+    new_hand = {key: value for key, value in hand.items()}
+    for letter in word.lower():
+        if new_hand.get(letter):
+            new_hand[letter] -= 1
+    return new_hand
+    
 #
 # Problem #3: Test word validity
 #
